@@ -1,4 +1,4 @@
-# Lightning Whisper MLX
+# Lightning Whisper MLX(FIX)
 
 An incredibly fast implementation of Whisper optimized for Apple Silicon.
 
@@ -10,15 +10,13 @@ An incredibly fast implementation of Whisper optimized for Apple Silicon.
 
 - **Batched Decoding** -> Higher Throughput
 - **Distilled Models** -> Faster Decoding (less layers)
-- **Quantized Models** -> Faster Memory Movement
-- _Coming Soon: Speculative Decoding -> Faster Decoding with Assistant Model_
+- **Quantized Models** -> Faster Memory Movement(fix the quantized launch issue)
 
 ## Installation
 
-Install lightning whisper mlx using pip:
-
 ```bash
-pip install lightning-whisper-mlx
+git clone https://github.com/tom-cat-mao/lightning-whisper-mlx-quantization-fix.git
+pip install -e .
 ```
 
 ## Usage
