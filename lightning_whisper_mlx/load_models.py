@@ -26,16 +26,16 @@ def load_model(
 
     model_args = whisper.ModelDimensions(**config)
 
-    weights = mx.load(str(model_path / "weights.npz"))
-    weights = tree_unflatten(list(weights.items()))
+    weights_flat = mx.load(str(model_path / "weights.npz"))
+    weights = tree_unflatten(list(weights_flat.items()))
 
     model = whisper.Whisper(model_args, dtype)
 
     if quantization is not None:
         class_predicate = (
             lambda p, m: isinstance(m, (nn.Linear, nn.Embedding))
-            and f"{p}.scales" in weights
-        )
+            and f"{p}.scales" in weights_flat
+        )               
         nn.quantize(model, **quantization, class_predicate=class_predicate)
 
     model.update(weights)
